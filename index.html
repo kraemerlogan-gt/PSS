@@ -8,6 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Wider hardwood rail with traditional sight diamonds. */
+      #tableWrap{width:calc(100% - 56px);aspect-ratio:900/475;box-sizing:content-box;background:linear-gradient(135deg,#b98454,#704020 48%,#a36c42);border-width:28px;border-color:#85502d;box-shadow:inset 0 0 0 3px #c38d5b,inset 0 0 18px #392012,0 7px 0 #382317,0 16px 40px #0008}
+      #tableWrap canvas{position:relative;z-index:1}
+      .rail-diamond{position:absolute;z-index:2;width:8px;height:8px;background:#e7c481;box-shadow:0 0 0 2px #573019,0 1px 2px #2c170c;transform:rotate(45deg);pointer-events:none}.rail-diamond.top{top:-18px}.rail-diamond.bottom{bottom:-18px}.rail-diamond.left{left:-18px}.rail-diamond.right{right:-18px}.rail-diamond.d1{--mark:25%}.rail-diamond.d2{--mark:50%}.rail-diamond.d3{--mark:75%}.rail-diamond.top,.rail-diamond.bottom{left:var(--mark);margin-left:-4px}.rail-diamond.left,.rail-diamond.right{top:var(--mark);margin-top:-4px}
+      @media(max-width:680px){#tableWrap{width:calc(100% - 40px);border-width:20px}.rail-diamond.top{top:-14px}.rail-diamond.bottom{bottom:-14px}.rail-diamond.left{left:-14px}.rail-diamond.right{right:-14px}}
+    </style>
   </head>
   <body>
     <main class="app-shell">
@@ -48,7 +55,13 @@
 
         <section class="table-stage">
           <div class="table-meta"><span>9 FT · DIAMOND PRO-AM</span><span>4-BANK TRAINING ENABLED</span></div>
-          <div id="tableWrap"><canvas id="table"></canvas></div>
+          <div id="tableWrap">
+            <canvas id="table"></canvas>
+            <i class="rail-diamond top d1"></i><i class="rail-diamond top d2"></i><i class="rail-diamond top d3"></i>
+            <i class="rail-diamond bottom d1"></i><i class="rail-diamond bottom d2"></i><i class="rail-diamond bottom d3"></i>
+            <i class="rail-diamond left d1"></i><i class="rail-diamond left d2"></i><i class="rail-diamond left d3"></i>
+            <i class="rail-diamond right d1"></i><i class="rail-diamond right d2"></i><i class="rail-diamond right d3"></i>
+          </div>
           <div class="legend"><i></i> Live trajectory <b></b> Contact point</div>
         </section>
 
