@@ -18,17 +18,19 @@ function drawAim(){let b=balls[0];if(!b||b.pocket||moving())return;let c=cues[se
 function drawBall(b){ctx.beginPath();ctx.arc(b.x+2,b.y+3,R,0,7);ctx.fillStyle='#06171299';ctx.fill();ctx.beginPath();ctx.arc(b.x,b.y,R,0,7);ctx.fillStyle=b.color;ctx.fill();if(b.team==='stripes'){ctx.beginPath();ctx.arc(b.x,b.y,R*.72,0,7);ctx.fillStyle='#f8f5e8';ctx.fill()}let g=ctx.createRadialGradient(b.x-5,b.y-6,1,b.x,b.y,R);g.addColorStop(0,'#ffffffaa');g.addColorStop(.28,'#ffffff22');g.addColorStop(1,'#00000020');ctx.fillStyle=g;ctx.fill();if(b.num){ctx.beginPath();ctx.arc(b.x,b.y,7,0,7);ctx.fillStyle='#f8f5e8';ctx.fill();ctx.fillStyle='#1b2420';ctx.font='bold 8px DM Mono';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(b.num,b.x,b.y+.5)}}
 function moving(){return balls.some(b=>!b.pocket&&(Math.abs(b.vx)+Math.abs(b.vy)>0.08))}
 function movingTowardPocket(b,p){return (p.x-b.x)*b.vx+(p.y-b.y)*b.vy>0.02}
-function verticalPocketOpening(b,edge){const candidates=edge===0?[pockets[0],pockets[3]]:[pockets[2],pockets[5]];return candidates.some(p=>Math.abs(b.y-p.y)<42&&movingTowardPocket(b,p))}
-function horizontalPocketOpening(b,edge){const candidates=edge===0?[pockets[0],pockets[1],pockets[2]]:[pockets[3],pockets[4],pockets[5]];return candidates.some(p=>Math.abs(b.x-p.x)<42&&movingTowardPocket(b,p))}
+// A side pocket is entered through its mouth, not by travelling parallel to the rail.
+function enteringPocket(b,p){return p.type==='side'?(p.y-b.y)*b.vy>0.02:movingTowardPocket(b,p)}
+function verticalPocketOpening(b,edge){const candidates=edge===0?[pockets[0],pockets[3]]:[pockets[2],pockets[5]];return candidates.some(p=>Math.abs(b.y-p.y)<42&&enteringPocket(b,p))}
+function horizontalPocketOpening(b,edge){const candidates=edge===0?[pockets[0],pockets[1],pockets[2]]:[pockets[3],pockets[4],pockets[5]];return candidates.some(p=>Math.abs(b.x-p.x)<42&&enteringPocket(b,p))}
 function scratchCue(player){if(pendingScratch!==null||ballInHand!==null)return;pendingScratch={player,removed:false};shotPlayer=null;$('status').textContent=`CUE ${player===0?'A':'B'} SCRATCH PENDING — BALLS STILL MOVING`;updateUI()}
 function sinkBall(b){if(b.cue){b.pocket=true;b.vx=b.vy=0;scratchCue(shotPlayer??selected);return}b.pocket=true;b.vx=b.vy=0;pocketed++;if(b.team==='eight'){const player=shotPlayer??selected,ownTeam=player===0?'solids':'stripes',ownBallsLeft=balls.some(x=>x.team===ownTeam&&!x.pocket);if(ownBallsLeft){reset();$('status').textContent='8 BALL POCKETED EARLY — TABLE RESET';return}$('status').textContent='8 BALL — TABLE CLEARED'}else if(b.team)$('status').textContent=`${b.team.toUpperCase()} BALL POCKETED`;updateStats()}
 function pocketPhysics(b){
   for(const p of pockets){
     const d=Math.hypot(b.x-p.x,b.y-p.y), capture=p.type==='side'?29:32;
     const dropZone=d<capture;
-    if(dropZone){sinkBall(b);return true}
+    if(dropZone&&enteringPocket(b,p)){sinkBall(b);return true}
     // The curved leather-facing jaw softly turns near-misses toward or away from the opening.
-    if(d<50&&Math.abs(b.vx*(b.x-p.x)/d+b.vy*(b.y-p.y)/d)<Math.hypot(b.vx,b.vy)*.6){const nx=(b.x-p.x)/d,ny=(b.y-p.y)/d,approach=b.vx*nx+b.vy*ny;if(approach<0){b.vx-=approach*nx*1.42;b.vy-=approach*ny*1.42;b.vx*=.78;b.vy*=.78;bounces++;updateStats();return true}}
+    if(enteringPocket(b,p)&&d<50&&Math.abs(b.vx*(b.x-p.x)/d+b.vy*(b.y-p.y)/d)<Math.hypot(b.vx,b.vy)*.6){const nx=(b.x-p.x)/d,ny=(b.y-p.y)/d,approach=b.vx*nx+b.vy*ny;if(approach<0){b.vx-=approach*nx*1.42;b.vy-=approach*ny*1.42;b.vx*=.78;b.vy*=.78;bounces++;updateStats();return true}}
   }
   return false
 }
