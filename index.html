@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pool Physics Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header>
+        <div>
+          <p class="eyebrow">PRECISION PRACTICE</p>
+          <h1>Pool Physics <span>Lab</span></h1>
+        </div>
+        <div class="header-actions">
+          <span class="status-dot"></span><span id="status">TABLE READY</span>
+          <button id="resetBtn" class="ghost-btn">Reset rack</button>
+        </div>
+      </header>
+
+      <section class="layout">
+        <aside class="panel control-panel">
+          <div class="panel-title"><span>01</span><h2>Table physics</h2></div>
+          <div class="control-group">
+            <label for="felt"><span>Felt speed</span><output id="feltOut">62%</output></label>
+            <input id="felt" type="range" min="20" max="95" value="62" />
+            <p>Higher values let every ball travel farther.</p>
+          </div>
+          <div class="control-group">
+            <label for="rail"><span>Rail stiffness</span><output id="railOut">78%</output></label>
+            <input id="rail" type="range" min="40" max="98" value="78" />
+            <p>Controls rebound energy off the cushions.</p>
+          </div>
+          <div class="stat-grid">
+            <div><span>BOUNCES</span><strong id="bounceCount">0</strong></div>
+            <div><span>BALLS IN</span><strong id="pocketCount">0</strong></div>
+          </div>
+          <div class="hint-card">
+            <span class="key">TIP</span>
+            <p>Drag a cue ball to reposition it. Aim with the cue controls or drag from a ball.</p>
+          </div>
+        </aside>
+
+        <section class="table-stage">
+          <div class="table-meta"><span>9 FT · DIAMOND PRO-AM</span><span>4-BANK TRAINING ENABLED</span></div>
+          <div id="tableWrap"><canvas id="table"></canvas></div>
+          <div class="legend"><i></i> Live trajectory <b></b> Contact point</div>
+        </section>
+
+        <aside class="panel cue-panel">
+          <div class="panel-title"><span>02</span><h2>Cue controls</h2></div>
+          <div class="cue-tabs">
+            <button class="cue-tab active" data-cue="0"><i class="white"></i> Cue A</button>
+            <button class="cue-tab" data-cue="1"><i class="gold"></i> Cue B</button>
+          </div>
+          <div class="cue-card">
+            <div class="cue-heading"><span id="cueName">CUE A · WHITE</span><button id="placeBtn">Place on table</button></div>
+            <div class="axis-control">
+              <label>Cue position X <output id="posOut">42%</output></label>
+              <input id="cuePos" type="range" min="4" max="96" value="42" />
+            </div>
+            <div class="axis-control">
+              <label>Cue position Y <output id="posYOut">50%</output></label>
+              <input id="cuePosY" type="range" min="6" max="94" value="50" />
+            </div>
+            <div class="axis-control">
+              <label>Cue angle <output id="angleOut">-8°</output></label>
+              <input id="cueAngle" type="range" min="-180" max="180" value="-8" />
+            </div>
+            <div class="axis-control power-control">
+              <label>Shot power <output id="powerOut">54%</output></label>
+              <input id="power" type="range" min="10" max="100" value="54" />
+            </div>
+            <button id="shootBtn" class="shoot-btn"><span>↗</span> Take shot</button>
+          </div>
+          <div class="quick-row">
+            <button data-shot="bank">1 BANK</button><button data-shot="kick">KICK</button><button data-shot="four">4 BANK</button>
+          </div>
+          <p class="fine-print">Use 1–2 to select a cue · Space to shoot · R to reset</p>
+        </aside>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
