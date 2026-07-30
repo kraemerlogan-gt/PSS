@@ -6,6 +6,8 @@ This is a small browser-based pool practice app with no build step. Open `index.
 - `styles.css` contains the shared interface styling.
 - `app.js` contains canvas drawing, game state, input handling, rack setup, and physics.
 
+Cue controls use the sliders and Take Shot button directly; there are no quick-shot preset buttons.
+
 When editing pocket visuals, keep rendering changes separate from the physics routines in `app.js` (especially `pocketPhysics`, rail-opening checks, and ball collision resolution). Verify visual-only requests do not change gameplay behavior.
 
 Corner pocket wells and their thick leather rims are full circles, including the portion extending into the playfield. Preserve their configured orientation when refining their artwork, and do not alter collision code for visual pocket changes.
