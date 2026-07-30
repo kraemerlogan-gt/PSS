@@ -8,6 +8,8 @@ This is a small browser-based pool practice app with no build step. Open `index.
 
 Cue controls use the sliders and Take Shot button directly; there are no quick-shot preset buttons.
 
+Sight diamonds use three evenly spaced marks on each short rail and seven evenly spaced marks on each long rail.
+
 When editing pocket visuals, keep rendering changes separate from the physics routines in `app.js` (especially `pocketPhysics`, rail-opening checks, and ball collision resolution). Verify visual-only requests do not change gameplay behavior.
 
 Corner pocket wells and their thick leather rims are full circles, including the portion extending into the playfield. Preserve their configured orientation when refining their artwork, and do not alter collision code for visual pocket changes.
