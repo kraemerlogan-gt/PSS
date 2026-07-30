@@ -12,6 +12,6 @@ Corner pocket wells and their thick leather rims are full circles, including the
 
 Side pockets are visual-only 46px circular wells centered on the inner wood edge; render the 4px leather rim as an inset layer on the same well element so it shares the exact diameter and offset, with no legacy side-pocket backing layers.
 
-Inner rails are 30px felt-toned cushions with diagonal mouths sized to the 46px pockets: side jaws slope outward toward the side pockets and corner mouths match the same width. Keep the tightly constrained rail-only opening checks in `app.js` aligned with these visuals so balls cannot clip through a diagonal jaw; do not alter other pocket physics when changing rails.
+Inner rails are 30px felt-toned cushions with diagonal mouths: side jaws match their 46px pockets and slope outward toward the side pockets, while corner mouths are wider to meet their pocket wells. Keep the rail-only opening checks in `app.js` aligned with these visuals so balls cannot clip through a diagonal jaw; do not alter other pocket physics when changing rails.
 
 Update this `AGENTS.md` whenever preparing a new commit so its project guidance stays current.
