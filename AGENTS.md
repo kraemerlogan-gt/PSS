@@ -8,8 +8,8 @@ This is a small browser-based pool practice app with no build step. Open `index.
 
 When editing pocket visuals, keep rendering changes separate from the physics routines in `app.js` (especially `pocketPhysics`, rail-opening checks, and ball collision resolution). Verify visual-only requests do not change gameplay behavior.
 
-Corner pocket wells are full circles, with a three-quarter rim facing the wood and the well continuing into the playfield. Preserve their configured orientation when refining their artwork, and do not alter collision code for visual pocket changes.
+Corner pocket wells and their thick leather rims are full circles, including the portion extending into the playfield. Preserve their configured orientation when refining their artwork, and do not alter collision code for visual pocket changes.
 
-Side pockets are visual-only 46px circular wells centered on the inner wood edge; do not retain legacy side-pocket backing or rim layers.
+Side pockets are visual-only 46px circular wells centered on the inner wood edge, with matching thick leather rims; do not retain legacy side-pocket backing layers.
 
 Update this `AGENTS.md` whenever preparing a new commit so its project guidance stays current.
