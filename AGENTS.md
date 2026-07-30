@@ -20,4 +20,6 @@ Inner rails are 30px felt-toned cushions with diagonal mouths: side jaws match t
 
 Teams are open through the break and any shot that pockets both groups. On a later shot that pockets only solids or only stripes, assign that group to the shooter and the other group to the opponent; use these assignments for first-contact fouls and 8-ball eligibility. An 8-ball contact is a scratch only when it is the cue ball's first object-ball contact.
 
+Every rack reset, including either 8-ball result, restores the cue ball and both saved cue positions to their opening coordinates and refreshes the cue controls.
+
 Update this `AGENTS.md` whenever preparing a new commit so its project guidance stays current.
