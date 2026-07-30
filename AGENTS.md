@@ -22,7 +22,7 @@ Inner rails are 30px felt-toned cushions with diagonal mouths: side jaws match t
 
 Teams are open through the break and any shot that pockets both groups. On a later shot that pockets only solids or only stripes, assign that group to the shooter and the other group to the opponent; use these assignments for first-contact fouls and 8-ball eligibility. An 8-ball contact is a scratch only when it is the cue ball's first object-ball contact.
 
-After a settled, non-scratch shot that pockets no object ball, pass control to the other cue; pocketing an object ball keeps control with the shooter.
+After a settled, non-scratch shot on an assigned table, keep control only when the shooter pockets their own group; otherwise pass control to the other cue. On an open table, pocketing any object ball keeps control.
 
 Every rack reset, including either 8-ball result, restores the cue ball and both saved cue positions to their opening coordinates and refreshes the cue controls.
 
