@@ -14,4 +14,6 @@ Side pockets are visual-only 46px circular wells centered on the inner wood edge
 
 Inner rails are 30px felt-toned cushions with diagonal mouths: side jaws match their 46px pockets and slope outward toward the side pockets, while 60px corner jaws slope away from each corner pocket. Corner rail collision uses the matching narrow diagonal boundary, motion toward both sides of the target corner, and a sufficiently diagonal approach, preventing shallow-angle clipping through a jaw; do not alter other pocket physics when changing rails.
 
+Teams are open through the break and any shot that pockets both groups. On a later shot that pockets only solids or only stripes, assign that group to the shooter and the other group to the opponent; use these assignments for first-contact fouls and 8-ball eligibility.
+
 Update this `AGENTS.md` whenever preparing a new commit so its project guidance stays current.
