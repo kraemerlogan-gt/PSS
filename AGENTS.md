@@ -10,6 +10,6 @@ When editing pocket visuals, keep rendering changes separate from the physics ro
 
 Corner pocket wells are full circles, with a three-quarter rim facing the wood and the well continuing into the playfield. Preserve their configured orientation when refining their artwork, and do not alter collision code for visual pocket changes.
 
-Side pockets are visual-only leather insets with full circular wells centered on the inner wood edge; keep their styling consistent with the corner pockets.
+Side pockets are visual-only 46px circular wells centered on the inner wood edge; do not retain legacy side-pocket backing or rim layers.
 
 Update this `AGENTS.md` whenever preparing a new commit so its project guidance stays current.
